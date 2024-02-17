@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\unitmodel;
 use Illuminate\Http\Request;
+use App\Models\masterlogbook;
 
 class AdminController extends Controller
 {
@@ -11,8 +12,26 @@ class AdminController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('admin.v_laporan');
+    {   
+        
+        $log = masterlogbook::all();
+        
+        $unitLogs = MasterLogbook::whereHas('modelunit', function ($query) {
+            $query->where('unit', 'TEST');
+        })->get();
+
+        $unitLogs1 = MasterLogbook::whereHas('modelunit', function ($query) {
+            $query->where('unit', 'test3');
+        })->get();
+
+        // dd($unitLogs);  
+        return view('admin.v_laporan',[
+            'log' => $log,
+            'unitLogs' => $unitLogs,
+            'unitLogs1' => $unitLogs1
+            
+        ]);
+        
     }
     public function laporan()
     {

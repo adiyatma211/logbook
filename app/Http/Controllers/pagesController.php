@@ -20,15 +20,19 @@ class pagesController extends Controller
     public function masterdb()
     {
         $user = User::where('role', 'user')->get();
+        $usercount = User::where('role', 'user')->get();
         $ongoingCount = MasterLogbook::where('status', 'on Progress')->count();
         $newCount = MasterLogbook::where('status', 'new')->count();
         $doneCount = MasterLogbook::where('status', 'done')->count();
+        $total  = $ongoingCount + $newCount + $doneCount;
         return view('master',[
             'user' => $user,
+            'usercount' => count($usercount),
             'master' => masterlogbook::with('user')->get(),
             'ongoingCount' => $ongoingCount,
             'newCount' => $newCount,
-            'doneCount' => $doneCount
+            'doneCount' => $doneCount,
+            'total' => $total
         ]);
     }
 
