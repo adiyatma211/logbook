@@ -1,4 +1,5 @@
 @extends('layouts.base')
+@section('headuser', 'active')
 @section('konten')
 <div class="page-title">
     <div class="row">
@@ -22,9 +23,8 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form form-vertical" action="" method="POST">
+                        <form class="form form-vertical" action="{{ route('profile.update', auth()->id()) }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="id" value="">
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-12">
@@ -32,7 +32,7 @@
                                             <label for="first-name-icon">Name</label>
                                             <div class="position-relative">
                                                 <input type="text" class="form-control"
-                                                    placeholder="Your Name" id="first-name-icon" name="name" value="">
+                                                    placeholder="Your Name" id="first-name-icon" name="name" value="{{$user->name}}">
                                                 <div class="form-control-icon">
                                                     <i class="bi bi-person"></i>
                                                 </div>
@@ -44,41 +44,40 @@
                                             <label for="first-name-icon">NIP</label>
                                             <div class="position-relative">
                                                 <input type="text" class="form-control"
-                                                    placeholder="NIPD" id="first-name-icon" name="name" value="">
+                                                    placeholder="NIPD" id="first-name-icon" name="nip" value="{{$user->nip}}">
                                                 <div class="form-control-icon">
                                                     <i class="bi bi-person"></i>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="form-group has-icon-left">
-                                            <label for="mobile-id-icon">Phone</label>
-                                            <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="Phone"
-                                                    id="mobile-id-icon" name="phone" value="">
-                                                <div class="form-control-icon">
-                                                    <i class="bi bi-phone"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                 
                                     <div class="col-12">
                                         
                                             <div class="mb-3">
                                                 <label for="formFile" class="form-label">Upload Image Profile </label>
-                                                <input class="form-control" type="file" id="formFile">
+                                                <input class="form-control" name="image" type="file" id="formFile">
                                             </div>
                                         </div>
                                     </div>
-                                   
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-
                                     </div>
                                 </div>
                             </div>
                         </form>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Profile</h4>
+                                            <img class="avatar me-3" src="{{ asset('public/Image/' . $user->image) }}" style="width: 250px; height:250px;" alt="">
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

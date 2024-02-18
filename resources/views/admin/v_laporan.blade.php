@@ -1,4 +1,5 @@
 @extends('layouts.base')
+@section('headproduct', 'active')
 @section('konten')
 <div class="page-content"> 
     <section class="section">

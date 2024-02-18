@@ -28,7 +28,12 @@ Route::get('/laporunit/edit/{id}', [AdminController::class, 'unitedit']);
 Route::put('/laporunit/update/{id}', [AdminController::class, 'simpanunit']);
 Route::delete('/laporunit/delete/{id}', [AdminController::class, 'deleteunit']);
 Route::get('/user', [AdminController::class, 'user']);
-Route::get('/user/tambah', [AdminController::class, 'tambahuser']);
+Route::get('/user/tambah', [AdminController::class, 'userload']);
+Route::post('/user/tambah/simpan', [AdminController::class, 'usersimpan']);
+Route::get('/user/edit/{id}', [AdminController::class, 'edituser']);
+Route::post('/user/edit/simpan/{id}', [AdminController::class, 'updateuser']);
+Route::delete('/user/delete/{id}', [AdminController::class, 'deleteuser']);
+// Route::post('/user/tambah/simpan', [AdminController::class, 'createuser']);
 
 
 
@@ -40,6 +45,7 @@ Route::get('/tambah/edit/{id}', [UserController::class, 'show']);
 Route::put('/tambah/edit/save/{id}', [UserController::class, 'update']);
 Route::delete('/tambah/delete/{id}', [UserController::class, 'destroy']);
 Route::get('/profuser', [UserController::class, 'profile']);
+Route::post('/profuser/update/{user}', [UserController::class, 'profilesave'])->name('profile.update');
 
 
 

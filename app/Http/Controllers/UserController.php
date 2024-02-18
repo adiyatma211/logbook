@@ -6,12 +6,17 @@ use App\Models\User;
 use App\Models\unitmodel;
 use Illuminate\Http\Request;
 use App\Models\masterlogbook;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $user = User::all();
@@ -124,6 +129,37 @@ class UserController extends Controller
 
     public function profile()
     {
-        return view('user.v_profile');
+        $user = Auth::user();
+        return view('user.v_profile',[
+            'user' => $user
+        
+        ]);
     }
+    public function profilesave(User $user ,Request $request)
+    {
+    
+
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('public/Image'), $filename);
+            $user->image = $filename;
+            $user->save();
+        }
+        
+        $user->update([
+            'name' => $request->name,
+            'nip' => $request->nip,
+            'email' => $request->email,
+            'updated_at' => now()
+        ]);
+        return redirect('/profuser')->with('profile','Profile updated successfully!');
+
+    //    dd($user);
+    // return redirect('/profuser')->with(['message' => 'Laporan Berhasil di Hapus']);
+
+        // Mengupdate atribut user dengan data baru
+       
+        }
 }

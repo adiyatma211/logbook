@@ -39,7 +39,7 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
-                            <a href="index.html"><img src="./assets/compiled/svg/logo.svg" alt="Logo"
+                            <a href="index.html"><img src="{{asset('dist//assets/compiled/svg/logo.svg')}}" alt="Logo"
                                     srcset=""></a>
                         </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
@@ -88,36 +88,45 @@
                 </div>
                 @if (Auth::user()->role == 'user')
                     <div class="sidebar-menu">
-                        <ul class="menu">
-                            <li class="sidebar-title">Menu</li>
 
-                            <li class="sidebar-item active">
-                                <a href="/" class='sidebar-link'>
+                        <ul class="menu">
+                            
+                            <li class="sidebar-item active ">
+                                <a href="/" class='sidebar-link' @yield('dashboard') >
                                     <i class="bi bi-grid-fill"></i>
                                     <span>User Dashboard</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
+                            <li class="sidebar-item @yield('headproduct') has-sub">
+                                <a href="#" class='sidebar-link '>
                                     <i class="bi bi-stack"></i>
                                     <span>User Laporan</span>
                                 </a>
-                                <ul class="submenu ">
-                                    <li class="submenu-item  ">
+                                <ul class="submenu @yield('logtambah') ">
+                                    <li class="submenu-item  @yield('inputlog')">
                                         <a href="/tambah" class="submenu-link">Daftar Laporan</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="sidebar-item  has-sub">
+                            <li class="sidebar-item @yield('headuser') has-sub">
                                 <a href="#" class='sidebar-link'>
                                     <i class="bi bi-collection-fill"></i>
                                     <span>User Profile Management </span>
                                 </a>
-                                <ul class="submenu ">
-                                    <li class="submenu-item  ">
+                                <ul class="submenu  ">
+                                    <li class="submenu-item @yield('uluser')  ">
                                         <a href="/profuser" class="submenu-link">Edit User</a>
                                     </li>
+                                    <li class="submenu-item  ">
+                                        <form action="/logout" method="post">
+                                            @csrf
+                                            
+                                            <button type="submit" style="align-items: center; margin-left:15px;" class="btn btn-danger">Log Out</button>
+                                        </form>
+                                      </li>
                                 </ul>
+
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -138,15 +147,15 @@
                 <ul class="menu">
                     <li class="sidebar-title">Menu</li>
 
-                    <li class="sidebar-item active ">
-                        <a href="/" class='sidebar-link'>
+                    <li class="sidebar-item  ">
+                        <a href="/" class='sidebar-link' @yield('dashboard')>
                             <i class="bi bi-grid-fill"></i>
                             <span>Dashboard Admin</span>
                         </a>
 
                     </li>
 
-                    <li class="sidebar-item  has-sub">
+                    <li class="sidebar-item @yield('headproduct') has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Management Laporan</span>
@@ -159,7 +168,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item  has-sub">
+                    <li class="sidebar-item @yield('headunit') has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Management Unit</span>
@@ -170,7 +179,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item  has-sub">
+                    <li class="sidebar-item @yield('headuser') has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-collection-fill"></i>
                             <span>User Profile Management </span>
@@ -180,32 +189,16 @@
                             <li class="submenu-item ">
                                 <a href="/user" class="submenu-link">Tambah User</a>
                             </li>
-                            {{-- <li class="submenu-item ">
-                                <a href="extra-component-divider.html" class="submenu-link">Divider</a>
-
-                            </li>
-
-                            <li class="submenu-item  ">
-                                <a href="extra-component-date-picker.html" class="submenu-link">Date Picker</a>
-
-                            </li>
-
-                            <li class="submenu-item  ">
-                                <a href="extra-component-sweetalert.html" class="submenu-link">Sweet Alert</a>
-
-                            </li>
-
-                            <li class="submenu-item  ">
-                                <a href="extra-component-toastify.html" class="submenu-link">Toastify</a>
-
-                            </li>
-
-                            <li class="submenu-item  ">
-                                <a href="extra-component-rating.html" class="submenu-link">Rating</a>
-
-                            </li> --}}
-
-                        </ul>
+                            <li>                          
+                                <li class="submenu-item  ">
+                                    <form action="/logout" method="post">
+                                        @csrf
+                                        
+                                        <button type="submit" style="align-items: center; margin-left:15px;" class="btn btn-danger">Log Out</button>
+                                    </form>
+                                  </li>
+                        </li>
+                    </ul>
                     </li>
                 </ul>
             </div>
@@ -245,7 +238,8 @@
     <script src="{{ asset('dist/assets/static/js/pages/datatables.js') }}"></script>
 
     <!-- Need: Apexcharts -->
-    <script src="{{ asset('dist/assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    {{-- <script src="{{ asset('dist/assets/extensions/apexcharts/apexcharts.min.js') }}"></script> --}}
     <script src="{{ asset('dist/assets/static/js/pages/dashboard.js') }}"></script>
     <script>
         function updateJam() {

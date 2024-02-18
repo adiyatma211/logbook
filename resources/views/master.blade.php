@@ -1,5 +1,8 @@
 @extends('layouts.base')
+@section('dashboard','active')
 @section('konten')
+
+
 @if (Auth::user()->role == 'Admin')
 <div class="page-content"> 
     <section class="row">
@@ -100,7 +103,9 @@
                             <h4>Grafik Laporan</h4>
                         </div>
                         <div class="card-body">
-                            <div id="chart-profile-visit"></div>
+                            <div class="p-6 m-20 bg-white rounded shadow">
+                                {!! $LogBookChart->container() !!}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -234,7 +239,9 @@
                             
                         </div>
                         <div class="card-body">
-                            <div id="chart-profile-visit"></div>
+                            <div class="p-6 m-20 bg-white rounded shadow">
+                                {!! $LogBookChart->container() !!}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -301,4 +308,8 @@
     </section>
 </div>
 @endif
+
+    <script src="{{ $LogBookChart->cdn() }}"></script>
+    {{ $LogBookChart->script() }}
+
 @endsection

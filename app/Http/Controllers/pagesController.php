@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\LogBookChart;
 use App\Models\masterlogbook;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
@@ -17,7 +18,7 @@ class pagesController extends Controller
 
     // master Dashboard
 
-    public function masterdb()
+    public function masterdb(LogBookChart $logBookChart)
     {
         $user = User::where('role', 'user')->get();
         $usercount = User::where('role', 'user')->get();
@@ -32,6 +33,7 @@ class pagesController extends Controller
             'ongoingCount' => $ongoingCount,
             'newCount' => $newCount,
             'doneCount' => $doneCount,
+            'LogBookChart' => $logBookChart->build(),
             'total' => $total
         ]);
     }

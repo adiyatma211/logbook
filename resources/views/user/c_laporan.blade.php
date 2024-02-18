@@ -1,4 +1,5 @@
 @extends('layouts.base')
+@section('inputlog','active')
 @section('konten')
 <div class="col">
     <div class="card">

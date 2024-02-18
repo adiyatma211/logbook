@@ -1,4 +1,5 @@
 @extends('layouts.base')
+@section('headunit', 'active')
 @section('konten')
 <div class="page-content"> 
     <section class="section">

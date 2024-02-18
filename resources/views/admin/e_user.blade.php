@@ -7,55 +7,49 @@
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form action="/user/tambah/simpan" method="post" class="form form-vertical"  enctype="multipart/form-data">
+                <form action="/user/edit/simpan/{{$user->id}}" method="post" class="form form-vertical">
                     @csrf
+                
                     <div class="form-body">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="first-name-vertical">Nama</label>
                                     <input type="text" id="first-name-vertical" class="form-control"
-                                        name="name" placeholder="Masukan Tanggal">
+                                        name="name" value="{{$user->name}}" placeholder="Masukan Tanggal">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="first-name-vertical">NIP</label>
                                     <input type="text" id="first-name-vertical" class="form-control"
-                                        name="nip" placeholder="Masukan NIP">
+                                        name="nip" value="{{$user->nip}}" placeholder="Masukan NIP">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="first-name-vertical">Kode</label>
                                     <input type="text" id="first-name-vertical" class="form-control"
-                                        name="kode" placeholder="Masukan Kode">
+                                        name="kode" value="{{$user->kode}}" placeholder="Masukan Kode">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="first-name-vertical">Username</label>
                                     <input type="text" id="first-name-vertical" class="form-control"
-                                        name="username" placeholder="Masukan Tanggal">
+                                        name="username" value="{{$user->username}}" placeholder="Masukan Tanggal">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="first-name-vertical">email</label>
                                     <input type="email" id="first-name-vertical" class="form-control"
-                                        name="email" placeholder="Masukan Tanggal">
+                                        name="email" value="{{$user->email}}"  placeholder="Masukan Tanggal">
                                 </div>
                             </div>     
                             <div class="col-12">
-                                <div class="form-group">
-                                    <label for="first-name-vertical">password</label>
-                                    <input type="password" id="first-name-vertical" class="form-control"
-                                        name="password" placeholder="Masukan Tanggal">
-                                </div>
-                            </div>
-                            <div class="col-12">
                                 <label for="contact-info-vertical">Jabatan</label>
-                                <select class="form-select form-select-sm" name="jabatan" aria-label="Small select example">
+                                <select class="form-select form-select-sm"  name="jabatan" aria-label="Small select example">
                                     <option value="Kepala Bidang">Kepala Bidang</option>
                                     <option value="Staff">Staff</option>
                                     <option value="HRD">HRD</option>
@@ -68,10 +62,10 @@
                                     <option value="User">Staff</option>
                                   </select>
                             </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="formFileMultiple" class="form-label">Masukan Foto</label>
-                                <input class="form-control" name="image" type="file" id="formFileMultiple"  multiple>
-                            </div>
+                                <input class="form-control" type="file" id="formFileMultiple" multiple>
+                            </div> --}}
                             <div  class="col-12 d-flex justify-content-end" style="margin-top: 20px" >
                                 <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
                                 <button type="reset"
