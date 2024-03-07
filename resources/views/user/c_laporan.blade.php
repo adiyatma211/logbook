@@ -20,11 +20,18 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-12">
+                            {{-- <div class="col-12">
                                 <div class="form-group">
                                     <label for="first-name-vertical">Masukan Tanggal</label>
                                     <input type="date" id="first-name-vertical" class="form-control"
                                         name="tanggal" placeholder="Masukan Tanggal">
+                                </div>
+                            </div> --}}
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="first-name-vertical">Masukan Tanggal dan Waktu</label>
+                                    <input type="datetime-local" id="first-name-vertical" class="form-control"
+                                        name="tanggal" placeholder="Masukan Tanggal dan Waktu">
                                 </div>
                             </div>
                             <div class="col-12">

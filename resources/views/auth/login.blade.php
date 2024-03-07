@@ -103,7 +103,7 @@
               @csrf
                 <div class="form-group position-relative has-icon-left mb-4">
                     
-                     <input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="Username" required autocomplete="username" autofocus>
+                     <input id="username" type="username" class="form-control form-control-xl @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="Username" required autocomplete="username" autofocus>
                     <div class="form-control-icon">
                         <i class="bi bi-person"></i>
                     </div>

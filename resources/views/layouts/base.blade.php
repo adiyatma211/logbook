@@ -189,6 +189,9 @@
                             <li class="submenu-item ">
                                 <a href="/user" class="submenu-link">Tambah User</a>
                             </li>
+                            <li class="submenu-item ">
+                                <a href="/reset" class="submenu-link">Tambah User</a>
+                            </li>
                             <li>                          
                                 <li class="submenu-item  ">
                                     <form action="/logout" method="post">

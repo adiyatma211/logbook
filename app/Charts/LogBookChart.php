@@ -23,6 +23,7 @@ class LogBookChart
         return $this->chart->barChart()
             ->setTitle('Log Book')
             ->setSubtitle('Total Log Book')
+            // ->setGrid(false, '#3F51B5', 1)
             ->addData('Total', [$totalbook])
             ->addData('Open', [$openbook])
             ->addData('Close', [$closebook])

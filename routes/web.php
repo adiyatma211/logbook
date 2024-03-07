@@ -52,6 +52,8 @@ Route::post('/profuser/update/{user}', [UserController::class, 'profilesave'])->
 
 
 
+
+
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 
 Auth::routes();
