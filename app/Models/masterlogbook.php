@@ -18,4 +18,9 @@ class masterlogbook extends Model
     {
         return $this->belongsTo(User::class,'user_id');    
     }
+    public function usereditby()
+    {
+        return $this->belongsTo(User::class,'edited_by','id');    
+    }
+
 }

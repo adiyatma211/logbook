@@ -72,19 +72,6 @@ class AdminController extends Controller
     public function usersimpan(Request $request)
     {     
 
-        // $imagePath = file_get_contents($request->file('image')->getRealPath());
-        // // $avatarBinary = file_get_contents($request->file('avatar')->getRealPath());
-        // User::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'role'=>$request->role,
-        //     'username' => $request->username,
-        //     'nip' => $request->nip,
-        //     'jabatan' => $request->jabatan,
-        //     'kode' => $request->kode,
-        //     'image' => $imagePath,
-        //     'password' => Hash::make($request->password)
-        // ]);  
 
         $data = new User();
         $data->name = $request->name;
@@ -106,7 +93,7 @@ class AdminController extends Controller
     
         $data->save();
 
-        return redirect('/user')->with('pesan', 'Data');
+        return redirect('/user')->withSuccess('User Telah Di Simpan!');
 
     }
 
@@ -127,7 +114,7 @@ class AdminController extends Controller
         $user->jabatan = $request->jabatan;
         $user->kode = $request->kode;
         $user->save();
-        return redirect('/user')->with('pesan', 'Data');
+        return redirect('/user')->withSuccess('User Telah Di Update!');
         
     }
 
@@ -136,7 +123,7 @@ class AdminController extends Controller
         $user = User::find($id);
         $user->delete();
         
-        return redirect('/user')->with('pesan', 'Data');
+        return redirect('/user')->withSuccess('User Telah Di Hapus!');
     }
 
 
@@ -148,7 +135,7 @@ class AdminController extends Controller
             'unit' => $request->unit,
             'kode' => $request->kode
         ]);
-        return redirect('/laporunit')->with('pesan', 'Data');
+        return redirect('/laporunit')->withSuccess('Unit Telah Di Tambah!');
     }
 
     public function unitedit($id)
@@ -164,7 +151,7 @@ class AdminController extends Controller
         $unit->unit = $request->unit;
         $unit->kode = $request->kode;
         $unit->save();
-        return redirect('/laporunit')->with('pesan', 'Data');
+        return redirect('/laporunit')->withSuccess('Unit Telah Di Update!');
         
     }
 
@@ -173,7 +160,7 @@ class AdminController extends Controller
         $unit = unitmodel::find($id);
         $unit->delete();
         
-        return redirect('/laporunit')->with('pesan', 'Data');
+        return redirect('/laporunit')->withSuccess('Unit Telah Di Hapus!');
     }
     /**
      * Show the form for creating a new resource.

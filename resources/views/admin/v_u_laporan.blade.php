@@ -101,7 +101,7 @@
                                 <th>Lokasi</th>
                                 <th>Resiko</th>
                                 <th>Tindakan</th>
-                                <th>Keterangan</th>
+                                {{-- <th>Keterangan</th> --}}
                                 <th>Status</th>
                                 <th>Nama</th>
                                 <th>Action</th>
@@ -117,7 +117,7 @@
                                 <td>Gedung A</td>
                                 <td>High</td>
                                 <td>ganti indihome</td>
-                                <td>Sudah di tindak lanjuti</td>
+                                {{-- <td>Sudah di tindak lanjuti</td> --}}
                                 <td>Selesai</td>
                                 <td>Hafidz</td>
                                 <td>

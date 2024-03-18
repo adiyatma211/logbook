@@ -39,7 +39,6 @@ class UserController extends Controller
             'unit' => $unit,
             'log' => $log,
             'user' => $user
-    
         ]);
     }
 
@@ -61,7 +60,7 @@ class UserController extends Controller
             'status' => $request->status,
         ]);
         // dd($request->all());
-        return redirect('/tambah')->with('pesan', 'Data');
+        return redirect('/tambah')->withSuccess('Laporan Telah Di Buat!');
     }
 
     /**
@@ -107,12 +106,13 @@ class UserController extends Controller
         'tindakan' => $request->tindakan,
         'keterangan' => $request->keterangan,
         'status' => $request->status,
+        'edited_by' => Auth::user()->id, // Tangkap ID pengguna yang melakukan edit
         
 
     ]);
     
     // Berikan respons berhasil
-    return redirect('/tambah')->with('success', 'Data Logbook berhasil diperbarui');
+    return redirect('/tambah')->withSuccess('Laporan Telah Di Update!');
     }
 
     /**
@@ -124,7 +124,7 @@ class UserController extends Controller
     
     // Hapus entitas
         $masterLogbook->delete();
-        return redirect('/tambah')->with(['message' => 'Laporan Berhasil di Hapus']);
+        return redirect('/tambah')->withSuccess('Laporan Telah Di Hapus!');
     }
 
     public function profile()
@@ -154,12 +154,18 @@ class UserController extends Controller
             'email' => $request->email,
             'updated_at' => now()
         ]);
-        return redirect('/profuser')->with('profile','Profile updated successfully!');
+        return redirect('/profuser')->withSuccess('Data Telah Di Perbarui!');
 
     //    dd($user);
     // return redirect('/profuser')->with(['message' => 'Laporan Berhasil di Hapus']);
 
         // Mengupdate atribut user dengan data baru
        
+        
+        }
+
+        public function resetpw()
+        {
+            return view('user.r_password');
         }
 }

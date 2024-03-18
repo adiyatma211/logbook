@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pagesController;
 use App\Http\Controllers\UserController;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +48,7 @@ Route::put('/tambah/edit/save/{id}', [UserController::class, 'update']);
 Route::delete('/tambah/delete/{id}', [UserController::class, 'destroy']);
 Route::get('/profuser', [UserController::class, 'profile']);
 Route::post('/profuser/update/{user}', [UserController::class, 'profilesave'])->name('profile.update');
+Route::get('/profuser/reset', [UserController::class, 'resetpw']);
 
 
 

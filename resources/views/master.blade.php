@@ -136,6 +136,7 @@
                                 <th>Keterangan</th>
                                 <th>Status</th>
                                 <th>Nama</th>
+                                <th>Diedit Oleh</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -153,6 +154,7 @@
                                 <td>{{$a->keterangan}}</td>
                                 <td>{{$a->status}}</td>
                                 <td>{{$a->user->name}}</td>
+                                <td>{{ $a->usereditby ? $a->usereditby->name : '' }}</td>
                                 <td>
                                     <a href="/tambah/edit/{{$a->id}}" type="button" class="btn btn-primary me-1 mb-1">Edit</a>
                                     <a href="#" onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin menghapus?')) { document.getElementById('delete-form-{{ $a->id }}').submit(); }" type="button" class="btn btn-danger">

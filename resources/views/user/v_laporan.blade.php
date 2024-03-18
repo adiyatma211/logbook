@@ -25,16 +25,16 @@
                                 <th>Lokasi</th>
                                 <th>Resiko</th>
                                 <th>Tindakan</th>
-                                <th>Keterangan</th>
                                 <th>Status</th>
                                 <th>Nama</th>
+                                <th>Diedit Oleh</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($log as $a)
+                            @foreach ($log as $key => $a)
                             <tr>
-                                <td>1</td>
+                                <td>{{(int)$key+1}}</td>
                                 <td>{{$a->user->nip}}</td>
                                 <td>{{$a->modelunit->unit ?? '' }}</td>
                                 <td>{{$a->tanggal}}</td>
@@ -42,9 +42,11 @@
                                 <td>{{$a->lokasi}}</td>
                                 <td>{{$a->resiko}}</td>
                                 <td>{{$a->tindakan}}</td>
-                                <td>{{$a->keterangan}}</td>
+                               
                                 <td>{{$a->status}}</td>
                                 <td>{{$a->user->name}}</td>
+                                <td>{{ $a->usereditby ? $a->usereditby->name : '' }}</td>
+                               
                                 <td>
                                     <a href="/tambah/edit/{{$a->id}}" type="button" class="btn btn-primary me-1 mb-1">Edit</a>
                                     <a href="#" onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin menghapus?')) { document.getElementById('delete-form-{{ $a->id }}').submit(); }" type="button" class="btn btn-danger">
@@ -62,7 +64,7 @@
                 </div>
             </div>
         </div>
-
+        @include('sweetalert::alert')
     </section>
 </div>
 @endsection 

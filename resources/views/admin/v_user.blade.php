@@ -1,6 +1,11 @@
 @extends('layouts.base')
 @section('headuser', 'active')
 @section('konten')
+@if (session('success_message'))
+        <div class="alert alert-success">
+            {{ session('seccess_message') }}
+        </div>
+    @endif
 <div class="page-content"> 
     <section class="section">
         <div class="card">
@@ -54,7 +59,7 @@
                 </div>
             </div>
         </div>
-
+        @include('sweetalert::alert')
     </section>
 </div>
 @endsection 

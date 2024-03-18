@@ -2,6 +2,11 @@
 @section('headunit', 'active')
 @section('konten')
 <div class="page-content"> 
+    @if (session('success_message'))
+        <div class="alert alert-success">
+            {{ session('seccess_message') }}
+        </div>
+    @endif
     <section class="section">
         <div class="card">
             <div class="card-header">
@@ -24,10 +29,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($unit as $a)
-
+                            @foreach ($unit as $key => $a)
                             <tr>
-                                <td>1</td>
+                                <td>{{(int)$key+1}}</td>
                                 <td>{{$a->kode}}</td>
                                 <td>{{$a->unit}}</td>
                                 <td>
@@ -47,7 +51,7 @@
                 </div>
             </div>
         </div>
-
     </section>
+    @include('sweetalert::alert')
 </div>
 @endsection 

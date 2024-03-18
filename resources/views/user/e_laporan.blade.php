@@ -23,7 +23,8 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="first-name-vertical">Masukan Tanggal</label>
-                                    <input type="date" id="first-name-vertical" class="form-control" name="tanggal" value="{{$log->tanggal}}" placeholder="{{$log->tanggal}}">
+                                    <input type="datetime-local" id="first-name-vertical" class="form-control" name="tanggal" value="{{ old('tanggal', $log->tanggal) }}" placeholder="{{ $log->tanggal }}">
+
                                 </div>
                             </div>
                             <div class="col-12">
@@ -54,12 +55,7 @@
                                     <textarea name="tindakan" class="form-control" value="{{$log->tindakan}}" placeholder="{{$log->tindakan}}" id="floatingTextarea2" style="height: 100px"> {{ $log->tindakan }}</textarea>
                                   </div>
                             </div>
-                            <div class="col-12" style="margin-top: 20px" >
-                                <div class="form-group">
-                                    <label for="contact-info-vertical">Keterangan</label>
-                                    <textarea name="keterangan" class="form-control" value="{{$log->keterangan}}" placeholder="{{$log->keterangan}}" id="floatingTextarea2"  style="height: 100px"> {{ $log->keterangan }}</textarea>
-                                  </div>
-                            </div>
+                            
                             <div class="col-12">
                                 <label for="contact-info-vertical">Status</label>
                                 <select name="status" class="form-select form-select-sm" aria-label="Small select example">
@@ -75,6 +71,7 @@
                             </div>
                         </div>
                     </div>
+                    @include('sweetalert::alert')
                 </form>
             </div>
         </div>
